@@ -21,6 +21,31 @@ def add_toppings():      #add a topping
     except:
         print("\nI'm not sure what you said, please try again.")  #if user input wrong value
 
+def remove_toppings():        #remove a topping
+    if len(toppings_added)>0:
+        print('\nNow some toppings are remove from your pizza.')
+        display_toppings(toppings_added)
+        index=int(input())
+        toppings_left.append(toppings_added.pop(index))       # remove it
+        print_pizza()
+    else:
+        print("\nYou Haven't remove any topping from your pizza.")
+
+def change_pizza():
+    if len(toppings_added)>0:
+        print('\nChoose the number of the topping that would you like to change from your pizza.')
+        for i in range (len(toppings_added)):
+            print(i,toppings_added[i])
+        index=int(input())
+        toppings_left.append(toppings_added.pop(index))       # change it
+        print_pizza()
+        print('\nWhich topping would you like to add to your pizza?')
+        display_toppings(toppings_left)
+        index=int(input())
+        toppings_added.append(toppings_left.pop(index))
+        print_pizza()
+    else:
+        print("You haven't added any toppings yet.")
     
 def order_pizza():    #order the pizza
     print_pizza()
